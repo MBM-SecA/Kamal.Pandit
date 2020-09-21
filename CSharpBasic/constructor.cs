@@ -5,7 +5,8 @@ namespace AllAboutClasses
         public string Name{get; set;}
         public int Population{get; set;}
         public double Area{get;set;}
-        public readonly double ARFA = 422564.12;
+        public readonly double AREA = 422564.12;
+        public static readonly bool IsOnEarth;
         // Default constructor
         public Country()
         {
@@ -22,6 +23,16 @@ namespace AllAboutClasses
             Name = name;
             Population = population;
             Area = area;
+        }
+        //Static constructor
+        static Country()
+        {
+            IsOnEarth= true;
+        }
+        //Finalizer or destructor
+        ~Country()
+        {
+            
         }
     }
     public class Demo
