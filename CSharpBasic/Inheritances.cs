@@ -19,28 +19,6 @@ public abstract class Shape
     }
 }
 
-public class Square : Shape, IShapeWithSides
-{
-    public Square(double side)
-    {
-        Side = side;
-    }
-    public double Side { get; set; }
-    public override double GetArea() => Side * Side;
-
-    public override double GetCircumference() => 4 * Side;
-
-    public override void Display()
-    {
-        Console.WriteLine($"Displaying results for square with side {Side}:");
-        Console.WriteLine($"Area: {this.GetArea()} square units");
-        Console.WriteLine($"Circumference: {this.GetCircumference()} units ");
-        Console.WriteLine($"Diagonal: {this.GetDiagonal()} units");
-    }
-
-    public double GetDiagonal() => Math.Sqrt(2) * Side;
-}
-
 public class Rectangle : Shape, IShapeWithSides
 {
     public double Length { get; set; }
@@ -57,13 +35,30 @@ public class Rectangle : Shape, IShapeWithSides
     
         public override void Display()
     {
-        Console.WriteLine($"Displaying results for square with length {Length} and breadth {Breadth}:");
+        if(Length == Breadth)
+        {
+            Console.WriteLine($"Displaying results for Square with side {Length}:");
+        }
+        else
+        {
+            Console.WriteLine($"Displaying results for Rectangle with length {Length} and breadth {Breadth}:");
+        }
+        
         Console.WriteLine($"Area: {this.GetArea()} square units");
         Console.WriteLine($"Circumference: {this.GetCircumference()} units ");
         Console.WriteLine($"Diagonal: {this.GetDiagonal()} units.");
     }
     public double GetDiagonal() => Math.Sqrt(Length * Length + Breadth * Breadth);
 }
+
+    public class Square: Rectangle
+    {
+        public Square(double side) : base(side, side)
+        {
+
+        }
+
+    }
 
 public class Circle : Shape
 {
@@ -77,7 +72,7 @@ public class Circle : Shape
     public override double GetCircumference() => 2 * Math.PI * Radius;
     public override void Display()
     {
-        Console.WriteLine($"Displaying results for square with radius {Radius}:");
+        Console.WriteLine($"Displaying results for Circle with radius {Radius}:");
         Console.WriteLine($"Area: {this.GetArea()} square units");
         Console.WriteLine($"Circumference: {this.GetCircumference()} units ");
     }

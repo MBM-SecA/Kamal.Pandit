@@ -7,7 +7,7 @@ public class Program
     {
        /* //Main program for collection 
         Collections collections = new Collections();
-        collections.LearnDictionary();*/
+        collections.LearnDictionary();
 
         // Inheritances 
         var square = new Square(8.0);
@@ -19,6 +19,14 @@ public class Program
 
         var circle = new Circle(7);
         circle.Display();
+        */
+        FileIO fileIO = new FileIO();
+        fileIO.LearnFilehandling();
+        fileIO.learnFileInfo();
+        
+        fileIO.LearnDirectories();
+        
+        
 
     }
 }
