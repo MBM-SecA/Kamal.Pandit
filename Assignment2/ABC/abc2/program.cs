@@ -1,1 +1,0 @@
-using System;namespace Assignment2 { class PrintHelloWorld {void Display(){ Console.WriteLine("Hello world");}}}

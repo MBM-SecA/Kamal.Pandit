@@ -49,10 +49,12 @@ namespace LINQ
             */
             var countries1 = Country.GetCountries();
 
+            string Check = "01/01/0001 00:00:00";
+            DateTime CheckDate = DateTime.Parse(Check, System.Globalization.CultureInfo.InvariantCulture);
             var asianCountries = from country in countries1
-                                 where country.Continent == "Asia"
+                                 where country.Continent == "Asia" && country.IndependenceDay == CheckDate
                                  select country.Name;
-            Console.WriteLine("Asian Countries are:");
+            Console.WriteLine("Asian Countries never invaded are:");
             
             foreach(var country in asianCountries)
             {
@@ -61,7 +63,7 @@ namespace LINQ
 
             
             var countriesWithMoreThan100kPopulation = from population in countries1
-                                      where population.Population < 100000
+                                      where population.Population < 100000 
                                       select population.Name;
                                       
             Console.WriteLine("Country With more than 100k population are:");                       

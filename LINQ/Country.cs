@@ -19,10 +19,17 @@ public class Country
     public static List<Country> GetCountries()
     {
         Country c1 = new Country("Nepal", "Asia", 147181, 65244221);
-        Country c2 = new Country("India", "Asia", 5456872, 5488415);
-        Country c3 = new Country("Bangladesh", "Asia", 12542.22, 12541);
+        string date1 = "10/12/1996";
+        DateTime date1a = DateTime.Parse(date1, System.Globalization.CultureInfo.InvariantCulture);
+        Country c2 = new Country("India", "Asia", 5456872, 5488415, date1a);
+        string date2 = "10/12/1996";
+        DateTime date2a = DateTime.Parse(date2, System.Globalization.CultureInfo.InvariantCulture);
+        string date3 = "10/12/1996";
+        DateTime date3a = DateTime.Parse(date3, System.Globalization.CultureInfo.InvariantCulture);
+
+        Country c3 = new Country("Bangladesh", "Asia", 12542.22, 12541, date2a);
         Country c4 = new Country("Portugal", "Europe", 12042.251, 12540);
-        Country c5 = new Country("China", "Asia", 98745.558, 278451);
+        Country c5 = new Country("China", "Asia", 98745.558, 278451, date3a);
         Country c6 = new Country("Spain", "Europe", 25045, 62510);
         Country c7 = new Country("Romania", "Europe", 21250.241, 26250);
         Country c8 = new Country("france", "Europe", 564781, 2350420);
