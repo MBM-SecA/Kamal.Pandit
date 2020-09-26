@@ -21,7 +21,7 @@ public class Country
         Country c1 = new Country("Nepal", "Asia", 147181, 65244221);
         Country c2 = new Country("India", "Asia", 5456872, 5488415);
         Country c3 = new Country("Bangladesh", "Asia", 12542.22, 12541);
-        Country c4 = new Country("Portugal", "Europe", 12042.251, 12540, "2008,04,14");
+        Country c4 = new Country("Portugal", "Europe", 12042.251, 12540);
         Country c5 = new Country("China", "Asia", 98745.558, 278451);
         Country c6 = new Country("Spain", "Europe", 25045, 62510);
         Country c7 = new Country("Romania", "Europe", 21250.241, 26250);
