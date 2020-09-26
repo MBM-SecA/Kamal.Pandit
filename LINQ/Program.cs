@@ -52,6 +52,7 @@ namespace LINQ
             var asianCountries = from country in countries1
                                  where country.Continent == "Asia"
                                  select country.Name;
+            Console.WriteLine("Asian Countries are:");
             
             foreach(var country in asianCountries)
             {
@@ -63,7 +64,7 @@ namespace LINQ
                                       where population.Population < 100000
                                       select population.Name;
                                       
-                                      
+            Console.WriteLine("Country With more than 100k population are:");                       
 
             foreach(var country in countriesWithMoreThan100kPopulation )
             {
