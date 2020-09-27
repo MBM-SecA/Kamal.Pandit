@@ -36,48 +36,40 @@ namespace LINQ
                 Console.WriteLine(name);
             }
 
-
-            List<Country> countries = new List<Country>();
-            /*Country c1 = new Country();
-            c1.Name = "Nepal";
-            c1.Continent = "Asia";
-            c1.Area = 147181;
-            c1.Polulation = 26494504;
-
-            countries.Add(c1);
-            Country c2 = new Country() {Name = "India", Continent = "Asia", Area = 5045155.245, Polulation = 5453552.2355};
-            */
-            var countries1 = Country.GetCountries();
-
-            string Check = "01/01/0001 00:00:00";
-            DateTime CheckDate = DateTime.Parse(Check, System.Globalization.CultureInfo.InvariantCulture);
-            var asianCountries = from country in countries1
-                                 where country.Continent == "Asia" && country.IndependenceDay == CheckDate
-                                 select country.Name;
-            Console.WriteLine("Asian Countries never invaded are:");
-            
-            foreach(var country in asianCountries)
+            //Projectionz
+            var results = numbers.Select(x => x*x);
+            foreach(var square in results)
             {
-                Console.WriteLine(country);
+                Console.WriteLine(square);
             }
 
-            
-            var countriesWithMoreThan100kPopulation = from population in countries1
-                                      where population.Population < 100000 
-                                      select population.Name;
-                                      
-            Console.WriteLine("Country With more than 100k population are:");                       
-
-            foreach(var country in countriesWithMoreThan100kPopulation )
+            // Ordering
+            var result2 = from num in numbers
+                          orderby num 
+                          select num; 
+                    
+            foreach(var square in result2)
             {
-                Console.WriteLine(country);
-            }
+                Console.WriteLine(square);
+            }  
+
+            // Partitioning
+            var result3 = numbers.Skip(5).Take(5);
+
+            // Quantifier
+            var result4 = numbers.Any(x => x % 2 == 0);
+            var result5 = numbers.All(x => x % 2 == 0);
+            var result6 = numbers.Contains(20);
+
+            var result7 = Enumerable.Range(1,1000);
+            var result8 = Enumerable.Repeat("Hello World!",10);
 
 
+            foreach(var num in result8)
+            {
+                Console.WriteLine(num);
+            }   
 
-
-
-                                   
         }
     }
 }
