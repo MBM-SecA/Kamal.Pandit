@@ -1,24 +1,42 @@
-using System.Collections.Generic;
+
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-public class EmployeeController : Controller
+public class EmployeeController: Controller
 {
+    private readonly EMSContext db;
+
+    public EmployeeController(EMSContext _db)
+   {
+        db = _db;
+    }
+     
     public ActionResult Index()
     {
-
-
-        //Object Initializer Syntax
-        Person emp1 = new Person() { FirstName = "kamal", Surname = "Pandit", Address = "Kapan", Salary = 45000.0 };
-        Person emp2 = new Person() { FirstName = "Ashish", Surname = "Kuinkel", Address = "Kharibot", Salary = 30000.0 };
-        Person emp3 = new Person() { FirstName = "Roshan", Surname = "Rai", Address = "Jorpati", Salary = 30000.0 };
-        Person emp4 = new Person() { FirstName = "Ranjit", Surname = "Tamang", Address = "Kapan", Salary = 25000.0 };
-        Person emp5 = new Person() { FirstName = "Subash", Surname = "Pandit", Address = "Sindhupalchowk", Salary = 100000.0 };
-        Person emp6 = new Person() { FirstName = "Cosmik", Surname = "Koirala", Address = "Kapan", Salary = 35000.0 };
-        Person emp7 = new Person() { FirstName = "Bibek", Surname = "Lama", Address = "Jorpati", Salary = 60000.0 };
-        Person emp8 = new Person() { FirstName = "Paras", Surname = "Tiwari", Address = "Chabahil", Salary = 75000.0 };
-
-        List<Person> employees = new List<Person>() { emp1, emp2, emp3, emp4, emp5, emp6, emp7, emp8};
-
+        
+        var employees = db.People.ToList();
         return View(employees);
     }
+    public ActionResult Detail([FromQuery]int id)
+    {  
+       var  employees = db.People.ToList();
+        Person employee= employees.FirstOrDefault(x=>x.Id==id);
+        return View(employee);
+        
+    }
+
+
+    public ActionResult Add()
+    {
+        return View();
+    }
+[HttpPost]
+    public ActionResult<string> Add([FromForm]Person person)
+    {
+        db.People.Add(person);
+        db.SaveChanges();
+        return "Employee Added successfully!!!";
+    }
+
 }
+
