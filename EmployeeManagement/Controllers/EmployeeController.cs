@@ -19,9 +19,8 @@ public class EmployeeController: Controller
     }
     public ActionResult Detail([FromQuery]int id)
     {  
-       var  employees = db.People.ToList();
-        Person employee= employees.FirstOrDefault(x=>x.Id==id);
-        return View(employee);
+        var  employees = db.People.Find(id);
+        return View(employees);
         
     }
 
@@ -35,7 +34,33 @@ public class EmployeeController: Controller
     {
         db.People.Add(person);
         db.SaveChanges();
-        return "Employee Added successfully!!!";
+        return RedirectToAction(nameof(Index));
+    }
+    public ActionResult Edit(int id)
+    {
+        var employee = db.People.Find(id);
+        return View(employee);
+    }
+    [HttpPost]
+     public ActionResult Edit(Person person)
+    {
+        db.People.Attach(person);
+        db.People.Update(person);
+        db.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+    public ActionResult Delete(int id)
+    {
+        var employee = db.People.Find(id);
+        return View(employee);
+    }
+    [HttpPost]
+    public ActionResult Delete(Person person)
+    {
+        db.People.Attach(person);
+        db.People.Remove(person);
+        db.SaveChanges();
+        return RedirectToAction(nameof(Index));
     }
 
 }

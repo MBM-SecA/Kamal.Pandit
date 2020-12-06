@@ -28,6 +28,21 @@
          <td>@employee.Address</td>
          <td>@employee.Gender</td>
          <td>@employee.Salary</td>
+          <td>
+          <a asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id">
+            <button type="button" class="btn btn-outline-info">
+              Edit
+            </button>
+          </a>
+        </td>
+        <td>
+          <a asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id">
+            <button type="button" class="btn btn-outline-danger">
+              Delete
+            </button>
+          </a>
+        </td>
+
        </tr>
          
      }
